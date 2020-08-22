@@ -34,7 +34,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr th:each="product: ${products}">
+                        <tr th:each="product: ${products.content}">
                             <td th:text="${product.id}"></td>
                             <td th:text="${product.name}"></td>
                             <td th:text="${product.price}"></td>
@@ -49,8 +49,14 @@
                     </table>
                 </div>
             </div>
+            <div class="card-footer">
+                <div th:if="${products.totalPages > 0}" class="pagination">
+                    <a th:if="${products.number > 0}" th:href="@{/admin/product(page=${products.number}, limit=${products.size})}">&laquo;</a>
+                    <a th:each="pageNumber : ${pageNumbers}" th:href="@{/admin/product(page=${pageNumber}, limit=${products.size})}" th:text="${pageNumber}" th:class="${pageNumber==products.number + 1} ? active"></a>
+                    <a th:if="${products.number < products.totalPages -1}" th:href="@{/admin/product(page=${products.number + 2}, limit=${products.size})}">&raquo;</a>
+                </div>
+            </div>
         </div>
-
     </div>
     <!-- /.container-fluid -->
 </div>

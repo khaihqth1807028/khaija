@@ -3,7 +3,9 @@ package heleyquin.service;
 import heleyquin.entity.Product;
 import heleyquin.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,8 +17,8 @@ public class ImpProductService implements ProductService{
     ProductRepository repository;
 
     @Override
-    public List<Product> getAll(int page, int limit) {
-        return repository.findAll();
+    public Page<Product> getAll(int page, int limit) {
+        return repository.findAll(PageRequest.of(page, limit, Sort.by(Sort.Direction.DESC, "id")));
     }
 
     @Override

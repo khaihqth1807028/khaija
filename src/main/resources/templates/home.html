@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{/layout/layout-admin.html}">
+      layout:decorate="~{/layout/layout-customer.html}">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
 <div layout:fragment="content">
-
+    <a th:href="@{/admin/product}">Go to manage product by admin</a>
 </div>
 
 </body>
